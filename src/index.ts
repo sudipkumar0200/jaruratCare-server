@@ -20,6 +20,9 @@ app.use(
 dbConnect();
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", usersRoute);
+app.get("/", (req, res) => {
+  res.json("Welcome to Jarurat Care API...")
+})
 
 app.listen(PORT, () => {
   console.log(`Server is running at PORT : ${PORT}`);

@@ -5,10 +5,10 @@ import authRoutes from "../src/routes/authRoutes";
 import dbConnect from "./config/db";
 import usersRoute from "./routes/usersRoute";
 
-export default dotenv.config();
+dotenv.config();
 
 const PORT = process.env.PORT || 3001;
-export const app = express();
+const app = express();
 app.use(express.json());
 app.use(
   cors({
@@ -27,3 +27,4 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running at PORT : ${PORT}`);
 });
+

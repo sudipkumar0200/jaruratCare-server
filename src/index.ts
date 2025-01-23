@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import authRoutes from "../src/routes/authRoutes";
+import authRoutes from "./routes/authRoutes";
 import dbConnect from "./config/db";
 import usersRoute from "./routes/usersRoute";
 
@@ -28,3 +28,4 @@ app.listen(PORT, () => {
   console.log(`Server is running at PORT : ${PORT}`);
 });
 
+export default app;

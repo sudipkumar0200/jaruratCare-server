@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 import { CustomRequest, UserPayload } from "../config/types";
 import { configDotenv } from "dotenv";
@@ -16,8 +16,6 @@ export const validateToken =  (
     });
     return;
   }
-//  console.log("vlue of authHeader : ",authHeader)
-//  console.log("vlue of secret token : ",process.env.SECRET_TOKEN)
   if (!authHeader.startsWith("Bearer ")) {
      res.status(401).json({
       success: false,
@@ -36,13 +34,6 @@ export const validateToken =  (
   try {
     const tokenDecoded = verify(token, process.env.SECRET_TOKEN)as UserPayload;
     req.user = tokenDecoded;
-    // req..userId == tokenDecoded.userId;
-
-
-    console.log("the decoded userId is :", req.user.userId);
-    
-    
-    console.log("the decoded user role is :", req.user.role);
     next();
   } catch (error) {
      res.status(401).json({ message: " You are not authorized" });

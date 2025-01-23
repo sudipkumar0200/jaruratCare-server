@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import { CustomRequest } from "../config/types";
 
 export const validateRole = (role:string) => {

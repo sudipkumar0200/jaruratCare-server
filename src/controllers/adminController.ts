@@ -1,7 +1,6 @@
 import { CustomRequest } from "../config/types";
 import { dataInput } from "../config/inputValidator";
 import { Request, Response } from "express";
-import { validateToken } from "../middleware/authMiddleware";
 import { patient } from "../models/patientModel";
 
 export const createData = async (
@@ -10,7 +9,6 @@ export const createData = async (
 ): Promise<void> => {
   const parsedBody = dataInput.safeParse(req.body);
   if (!parsedBody.success) {
-    // throw new Error("Invalid Emali or Password")
     res.status(401).json({ message: "Check your Input format" });
     return;
   }

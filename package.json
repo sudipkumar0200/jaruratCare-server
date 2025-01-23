@@ -4,9 +4,9 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "start:dev": "npx nodemon",
-    "build": "rimraf ./src && tsc",
-    "start": "npm run build && node dist/inde.js"
+    "dev": "ts-node src/index.ts",
+    "build": "tsc -b",
+    "start": "npm run build && node dist/index.js"
   },
   "keywords": [],
   "author": "",

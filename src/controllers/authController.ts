@@ -1,4 +1,4 @@
-import { Application, Request, RequestHandler, Response } from "express";
+import { Request, Response } from "express";
 import { sign } from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { signUpInput, signInInput } from "../config/inputValidator";
@@ -13,7 +13,6 @@ export const authSignUp = async (
   try {
     const parsedBody = signUpInput.safeParse(req.body);
     if (!parsedBody.success) {
-      // throw new Error("Invalid Emali or Password")
       res.status(401).json({ message: "Invalid Emali or Password" });
       return;
     }
@@ -28,7 +27,7 @@ export const authSignUp = async (
       return;
     }
     const hashedPasswd = await bcrypt.hash(parsedBody.data.passwd, 10);
-    const newUser = await user.create({
+    await user.create({
       email: parsedBody.data.email,
       passwd: hashedPasswd,
     });
@@ -90,4 +89,3 @@ export const authSignIn = async (req: Request, res: Response) => {
   }
 };
 
-// module.exports={authSignIn,authSignUp}
